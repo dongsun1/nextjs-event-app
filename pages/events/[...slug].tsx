@@ -1,8 +1,12 @@
 import { useRouter } from "next/router";
 
-const Slug = () => {
+const FilteredEventsPage = () => {
   const { query: { slug } = {} } = useRouter();
-  return <div>{slug}</div>;
+  return (
+    <div>
+      <h1>Filtered Event Page</h1>
+    </div>
+  );
 };
 
-export default Slug;
+export default FilteredEventsPage;

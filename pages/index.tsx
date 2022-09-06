@@ -1,13 +1,15 @@
 import type { NextPage } from "next";
 import Link from "next/link";
+import { getFeaturedEvents } from "../dummy-data";
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
+  const featuredEvents = getFeaturedEvents();
+
   return (
     <div>
-      <h1>Home</h1>
-      <Link href="/events">Events</Link>
+      <ul></ul>
     </div>
   );
 };
 
-export default Home;
+export default HomePage;
