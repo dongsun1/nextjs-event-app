@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Link from "next/link";
+import EventList from "../components/events/event-list";
 import { getFeaturedEvents } from "../dummy-data";
 
 const HomePage: NextPage = () => {
@@ -7,7 +7,7 @@ const HomePage: NextPage = () => {
 
   return (
     <div>
-      <ul></ul>
+      <EventList items={featuredEvents} />
     </div>
   );
 };
