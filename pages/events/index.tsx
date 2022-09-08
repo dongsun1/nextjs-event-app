@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 
 export interface Event {
-  eventId: number;
+  eventId: string;
   eventName: string;
   eventDate: string;
 }
@@ -11,8 +11,8 @@ interface EventArr extends Array<Event> {}
 
 const AllEventPage: NextPage = () => {
   const dummy: EventArr = [
-    { eventId: 0, eventName: "hi", eventDate: "2022/09" },
-    { eventId: 1, eventName: "hello", eventDate: "2022/10" },
+    { eventId: "0", eventName: "hi", eventDate: "2022/09" },
+    { eventId: "1", eventName: "hello", eventDate: "2022/10" },
   ];
   return (
     <div>
