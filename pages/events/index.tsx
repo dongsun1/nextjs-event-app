@@ -1,47 +1,24 @@
 import { NextPage } from "next";
-import Link from "next/link";
-
-export interface Event {
-  eventId: string;
-  eventName: string;
-  eventDate: string;
-}
-
-interface EventArr extends Array<Event> {}
+import { getAllEvents } from "../../dummy-data";
+import EventList from "../../components/events/event-list";
+import EventsSearch from "../../components/events/events-search";
+import { Fragment } from "react";
+import { useRouter } from "next/router";
 
 const AllEventPage: NextPage = () => {
-  const dummy: EventArr = [
-    { eventId: "0", eventName: "hi", eventDate: "2022/09" },
-    { eventId: "1", eventName: "hello", eventDate: "2022/10" },
-  ];
+  const router = useRouter();
+  const events = getAllEvents();
+
+  const findEventsHandler = (year: string, month: string) => {
+    const fullPath = `/events/${year}/${month}/`;
+    router.push(fullPath);
+  };
+
   return (
-    <div>
-      <h1>All Events</h1>
-      {dummy.map(({ eventId, eventName, eventDate }) => (
-        <ul key={eventId}>
-          <li>
-            <Link
-              href={{
-                pathname: "/events/[eventId]",
-                query: { eventId },
-              }}
-            >
-              {eventName}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={{
-                pathname: "/events/[...slug]",
-                query: { slug: eventDate },
-              }}
-            >
-              {eventDate}
-            </Link>
-          </li>
-        </ul>
-      ))}
-    </div>
+    <Fragment>
+      <EventsSearch onSearch={findEventsHandler} />
+      <EventList items={events} />
+    </Fragment>
   );
 };
 
